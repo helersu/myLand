@@ -17,6 +17,9 @@
 		8A608099201F150700C70534 /* CreateUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A608098201F150700C70534 /* CreateUser.swift */; };
 		8A60809B20204BF600C70534 /* MapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A60809A20204BF600C70534 /* MapView.swift */; };
 		8A60809D2020681800C70534 /* overlay.json in Resources */ = {isa = PBXBuildFile; fileRef = 8A60809C2020681800C70534 /* overlay.json */; };
+		8A60809F202095BF00C70534 /* testicon.png in Resources */ = {isa = PBXBuildFile; fileRef = 8A60809E202095BE00C70534 /* testicon.png */; };
+		8A6080A12021F91000C70534 /* UserPin.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A6080A02021F90F00C70534 /* UserPin.swift */; };
+		8A6080A3202305E600C70534 /* PathButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A6080A2202305E500C70534 /* PathButton.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -32,6 +35,9 @@
 		8A608098201F150700C70534 /* CreateUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateUser.swift; sourceTree = "<group>"; };
 		8A60809A20204BF600C70534 /* MapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapView.swift; sourceTree = "<group>"; };
 		8A60809C2020681800C70534 /* overlay.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = overlay.json; sourceTree = "<group>"; };
+		8A60809E202095BE00C70534 /* testicon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = testicon.png; sourceTree = "<group>"; };
+		8A6080A02021F90F00C70534 /* UserPin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserPin.swift; sourceTree = "<group>"; };
+		8A6080A2202305E500C70534 /* PathButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PathButton.swift; sourceTree = "<group>"; };
 		A4EBCED6BE87D7126447771E /* Pods-myLand.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-myLand.debug.xcconfig"; path = "Pods/Target Support Files/Pods-myLand/Pods-myLand.debug.xcconfig"; sourceTree = "<group>"; };
 		BB25BC121E57D0E07C93BC81 /* Pods_myLand.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_myLand.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -83,8 +89,11 @@
 				8A60807E201F008400C70534 /* AppDelegate.swift */,
 				8A608080201F008400C70534 /* ViewController.swift */,
 				8A608082201F008400C70534 /* Main.storyboard */,
+				8A6080A2202305E500C70534 /* PathButton.swift */,
 				8A60809A20204BF600C70534 /* MapView.swift */,
+				8A6080A02021F90F00C70534 /* UserPin.swift */,
 				8A608085201F008400C70534 /* Assets.xcassets */,
+				8A60809E202095BE00C70534 /* testicon.png */,
 				8A608087201F008400C70534 /* LaunchScreen.storyboard */,
 				8A60808A201F008400C70534 /* Info.plist */,
 				8A608090201F00A700C70534 /* GoogleService-Info.plist */,
@@ -166,6 +175,7 @@
 				8A608089201F008400C70534 /* LaunchScreen.storyboard in Resources */,
 				8A608086201F008400C70534 /* Assets.xcassets in Resources */,
 				8A608091201F00A700C70534 /* GoogleService-Info.plist in Resources */,
+				8A60809F202095BF00C70534 /* testicon.png in Resources */,
 				8A608084201F008400C70534 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -239,7 +249,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8A6080A12021F91000C70534 /* UserPin.swift in Sources */,
 				8A608081201F008400C70534 /* ViewController.swift in Sources */,
+				8A6080A3202305E600C70534 /* PathButton.swift in Sources */,
 				8A60809B20204BF600C70534 /* MapView.swift in Sources */,
 				8A608099201F150700C70534 /* CreateUser.swift in Sources */,
 				8A60807F201F008400C70534 /* AppDelegate.swift in Sources */,

@@ -147,6 +147,11 @@
                                     <constraint firstAttribute="height" constant="64" id="95f-y1-Rjh"/>
                                 </constraints>
                             </stackView>
+                            <view alpha="0.0" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="9vO-Kf-HpC">
+                                <rect key="frame" x="67" y="133" width="240" height="128"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -157,6 +162,7 @@
                         <viewLayoutGuide key="safeArea" id="uSR-ij-V2I"/>
                     </view>
                     <connections>
+                        <outlet property="annotationPanel" destination="9vO-Kf-HpC" id="xZS-jM-IcI"/>
                         <outlet property="mapView" destination="xSk-xS-T86" id="tr2-P0-u14"/>
                     </connections>
                 </viewController>

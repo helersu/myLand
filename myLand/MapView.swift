@@ -13,17 +13,21 @@ import MapKitGoogleStyler
 
 class MapView: UIViewController {
 
+    @IBOutlet weak var annotationPanel: UIView!
     @IBOutlet weak var mapView: MKMapView!
     
     var locationManager = CLLocationManager()
     let authorizationStatus = CLLocationManager.authorizationStatus()
     let regionRadius : Double = 1000
+    let detailLbl = UILabel()
+
     
     override func viewDidLoad() {
         super.viewDidLoad()
         mapView.delegate = self
         locationManager.delegate = self
         configureLocationServices()
+        addImageAnnotation()
         // Do any additional setup after loading the view.
     }
 
@@ -38,16 +42,32 @@ class MapView: UIViewController {
         centerMapUserLocation()
         }
     }
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
     
+    private func configureTileOverlay(){
+        
+        guard let overlayFileURLString = Bundle.main.path(forResource: "overlay", ofType: "json") else {
+            return
+        }
+        
+        let overlayFileURL = URL(fileURLWithPath: overlayFileURLString)
+        
+        guard let tileOverlay = try? MapKitGoogleStyler.buildOverlay(with: overlayFileURL) else {
+            return
+        }
+        
+        mapView.add(tileOverlay)
+        
+    }
+    
+    func addImageAnnotation(){
+
+        guard let coordinate = locationManager.location?.coordinate else {return}
+        let myAnnotation = UserPin(coordinate: coordinate, title: "Baslik", subtitle: "altBaslik")
+
+        mapView.addAnnotation(myAnnotation)
+        
+        
+    }
     
 
 
@@ -55,6 +75,16 @@ class MapView: UIViewController {
 }
 
 extension MapView: MKMapViewDelegate {
+    
+    func mapView(_ mapView: MKMapView, rendererFor overlay: MKOverlay) -> MKOverlayRenderer {
+        if let tileOverlay = overlay as? MKTileOverlay {
+            return MKTileOverlayRenderer(tileOverlay: tileOverlay)
+        }
+        else{
+            return MKOverlayRenderer(overlay: overlay)
+        }
+    }
+    
     func centerMapUserLocation(){
         //Take coordinate from GPS location
         guard let coordinate = locationManager.location?.coordinate else {return}
@@ -71,6 +101,7 @@ extension MapView: MKMapViewDelegate {
         mapCamera.heading = 45
         
         mapView.camera = mapCamera
+        configureTileOverlay()
         
         //mapView.setRegion(coordinateRegion, animated: true)
     }
@@ -91,5 +122,63 @@ extension MapView: CLLocationManagerDelegate{
     func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
         centerMapUserLocation()
     }
+    
+    func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
+        if annotation is MKUserLocation {
+            return nil
+        }
+        else {
+            let annotationView = mapView.dequeueReusableAnnotationView(withIdentifier: "annotationView") ?? MKAnnotationView()
+            annotationView.image = UIImage(named: "testicon")
+            //detailLbl.frame = CGRect(x: 100, y: 100, width: 200, height: 200)
+            //detailLbl.textColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1)
+            //detailLbl.text = ""
+            //annotationPanel.addSubview(detailLbl)
+            
+            
+
+            //annotationView.addSubview(annotationPanel)
+            
+            
+            //add pathbutton for all annotation
+           let pathButton = PathButton(frame: CGRect(x: 0, y: 0, width: 400, height: 400))
+            annotationView.addSubview(pathButton)
+            
+                
+                
+        
+            
+            return annotationView
+        }
+    }
+    
+    func mapView(_ mapView: MKMapView, didSelect view: MKAnnotationView) {
+     
+   
+    // Do something selected Annatation
+      
+       
+        
+        
+        //UIView.animate(withDuration: 0.3) {
+           
+            //pathButton.alpha = 1
+            //if pathButton.alpha != pathButton.alpha{
+            //    pathButton.alpha = 1
+            //}
+            //else{
+            //     pathButton.alpha = 0
+            //}
+           
+        //}
+    }
+    
+    func mapView(_ mapView: MKMapView, didDeselect view: MKAnnotationView) {
+        
+        // do something annotation deselect
+    }
+    
+    
+
     
 }
